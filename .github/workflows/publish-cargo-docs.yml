@@ -1,0 +1,59 @@
+name: Publish Docs
+
+on:
+  push:
+    branches:
+      - main 
+    paths: 
+      - algo_rs/**   
+  workflow_dispatch:
+
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    defaults: 
+      run:
+        shell: bash
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          ref: main
+
+      # - name: cd into algo_rs
+      #   run: cd ./algo_rs    
+
+      - name: Generate Cargo Docs and setup redirect
+        id: generate
+        run: |
+          pwd
+          cd algo_rs
+          cargo doc --no-deps --document-private-items --all-features --release
+          echo "<meta http-equiv=\"refresh\" content=\"0; url=dynamic_programming\">" > ./target/doc/index.html
+    
+      - name: Copy generated docs to 'cargo-docs' branch
+        run: |
+          pwd
+          ls -la
+          git fetch origin cargo-docs:cargo-docs
+          git checkout cargo-docs
+          pwd
+          ls -la
+          rm -rf docs
+          mkdir -p docs
+          cp -R ./algo_rs/target/doc/* ./docs
+
+      - name: Commit and push changes
+        run: |
+          pwd
+          ls -la
+          git add ./docs
+          git status
+          git config --global user.email 'gh_workflow_action@users.noreply.github.com'
+          git config --global user.name 'gh_workflow_action'
+          git commit -m "update cargo docs"
+          git push origin cargo-docs
+
+
