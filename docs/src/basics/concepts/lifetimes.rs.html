@@ -69,7 +69,7 @@
     <span class="kw">use super</span>::<span class="kw-2">*</span>;
     <span class="attr">#[test]
     </span><span class="kw">fn </span>test() {
-        <span class="kw">let </span>cat = Cat { name: <span class="string">&quot;felix&quot; </span>};
+        <span class="kw">let </span>cat = Cat::new(<span class="string">&quot;felix&quot;</span>);
         <span class="kw">let </span>output = <span class="macro">format!</span>(<span class="string">&quot;{}&quot;</span>, cat);
         <span class="macro">assert_eq!</span>(output, <span class="string">&quot;A cat with a lifetime and display called felix&quot;</span>);
     }
