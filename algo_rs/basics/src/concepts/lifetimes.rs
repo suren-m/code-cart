@@ -31,7 +31,7 @@ mod tests {
     use super::*;
     #[test]
     fn test() {
-        let cat = Cat { name: "felix" };
+        let cat = Cat::new("felix");
         let output = format!("{}", cat);
         assert_eq!(output, "A cat with a lifetime and display called felix");
     }
