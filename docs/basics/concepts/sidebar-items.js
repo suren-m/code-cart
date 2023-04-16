@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"mod":[["lifetimes",""]]};
+window.SIDEBAR_ITEMS = {"mod":[["lifetimes",""],["static_and_dynamic_dispatch",""]]};
