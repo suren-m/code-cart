@@ -1,6 +1,5 @@
 [workspace]
 
 members = [
-    "basics",
     "dynamic_programming",
     "misc"]
