@@ -1,1 +1,1 @@
-window.ALL_CRATES = ["basics","dynamic_programming","misc"];
+window.ALL_CRATES = ["dynamic_programming","misc"];

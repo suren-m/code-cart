@@ -1,1 +1,0 @@
-window.SIDEBAR_ITEMS = {"mod":[["closures",""],["lifetimes",""],["static_and_dynamic_dispatch",""]]};

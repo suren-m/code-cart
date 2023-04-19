@@ -1,1 +1,0 @@
-window.SIDEBAR_ITEMS = {"fn":[["sort_abs",""]],"struct":[["User",""]]};
