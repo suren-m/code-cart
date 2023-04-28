@@ -13,12 +13,14 @@ package main
 import (
 	"fmt"
 	"time"
+	"concepts/arrays"
 	_ "rsc.io/quote"
 )
 
 func main() {
 	p(add(2, 2))
 	switching()
+	p(arrays.AddAgain(2,3))
 
 }
 
