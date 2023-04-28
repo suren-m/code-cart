@@ -23,6 +23,12 @@ trait WaterCapable {
 /// Super Trait
 trait Amphibious: LandCapable + WaterCapable {}
 
+struct Boat;
+impl WaterCapable for Boat{
+    fn float(&self) -> String {
+        String::from("sailing")
+    }
+}
 struct HoverCraft;
 impl Amphibious for HoverCraft {}
 impl LandCapable for HoverCraft {}
@@ -60,6 +66,14 @@ fn traverse_frozen_lake(vehicle: &impl Amphibious) -> Vec<String> {
     status.push(vehicle.float());
 
     status
+}
+
+fn impl_return() -> impl WaterCapable {
+    HoverCraft
+}
+
+fn dyn_return() -> Box<dyn Amphibious> {
+   Box::new(HoverCraft)
 }
 
 #[cfg(test)]
