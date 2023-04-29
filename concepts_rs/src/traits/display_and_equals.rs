@@ -66,7 +66,7 @@ mod tests {
     fn test() {
         let u1 = WebUserInfo {
             age: 32,
-            firstname: String::from("Jon"),
+            firstname: String::from("John"),
             lastname: "Doe".to_string(),
         };
         let u2 = WebUserInfo {
@@ -91,12 +91,12 @@ mod tests {
         // test user info id && username equals
         let tu1 = UniqueUser::<TestUserInfo> {
             id: 1,
-            username: "Jon".to_string(),
+            username: "John".to_string(),
             user_info: TestUserInfo {},
         }; // {} optional for unit struct
         let tu2 = UniqueUser::<TestUserInfo> {
             id: 2,
-            username: "Jon".to_string(),
+            username: "John".to_string(),
             user_info: TestUserInfo {},
         };
 
@@ -106,12 +106,12 @@ mod tests {
         // unique user with default user info (default equals comp)
         let du1 = UniqueUser::<DefaultUserInfo> {
             id: 1,
-            username: "Jon".to_string(),
+            username: "John".to_string(),
             user_info: DefaultUserInfo,
         };
         let du2 = UniqueUser::<DefaultUserInfo> {
             id: 2,
-            username: "Jon".to_string(),
+            username: "John".to_string(),
             user_info: DefaultUserInfo,
         };
         

@@ -43,7 +43,7 @@ mod tests {
 
         // Notice this assertion shows even if values of both objects are now same
         // need to run hasher again
-        obj2.name = "Jones".to_string();
+        obj2.name = "John".to_string();
         assert_eq!(hash_value1, hash_value2);
 
         obj2.hash(&mut hasher2);

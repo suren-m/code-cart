@@ -7,7 +7,7 @@ fn do_twice(f: fn(i32) -> i32, arg: i32) -> i32 {
 }
 
 fn closures() {
-    let mut name = String::from("jon");
+    let mut name = String::from("john");
 
     let greet = |msg| format!("{} {}", msg, name);
     println!("{}", greet("hello"));
