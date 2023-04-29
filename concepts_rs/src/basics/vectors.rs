@@ -12,6 +12,11 @@ fn even_filter(n: &[i32]) -> Vec<i32> {
     n.iter().filter(|&x| x % 2 == 1).copied().collect()
 }
 
+// or by using into_iter on a vec
+fn even_filter_v2(n: Vec<i32>) -> Vec<i32> {
+    n.into_iter().filter(|x| x % 2 == 1).collect()
+}
+
 /// retain only odd numbers (inplace filtering)
 /// input has to be a Vec. Notice the inplace filter
 /// had to call .to_vec()
@@ -36,6 +41,7 @@ mod tests {
     #[test]
     fn test() {
         let mut n = vec![1, 2, 3, 4, 5];
+        let n2 = n.clone();
         assert_eq!(doubles(&n), vec![1, 4, 9, 16, 25]);
         assert_eq!(even_filter(&n), vec![1, 3, 5]);
         assert_eq!(even_filter_in_place(&mut n), vec![1, 3, 5]);
@@ -43,6 +49,9 @@ mod tests {
         assert!(is_all_positive(&n)); // true
         assert_eq!(n.iter().find(|&&x| x == 3), Some(&3));
         assert_eq!(finder(&n, 3), Some(&3));
+
+        println!("n2: {:?}", &n2);
+        assert_eq!(even_filter_v2(n2), vec![1, 3, 5]);
 
         // enumerator
         let enumerator = [10].iter().enumerate();
