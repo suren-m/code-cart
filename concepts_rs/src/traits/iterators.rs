@@ -15,7 +15,8 @@
 // Item is the type of val that gets returned 
 // Map implements iterator trait
 fn squares(n: u32) -> impl Iterator<Item = u32> {
-    (0..n).map(|x| x * x)
+    let x = (0..n).map(|x| x * x);
+    x
 }
 
 // Option 2: using a function without map

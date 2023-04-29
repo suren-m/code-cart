@@ -5,6 +5,7 @@
 mod basics;
 mod closures;
 mod filesystem;
+mod functional;
 mod lifetimes;
 mod static_and_dynamic_dispatch;
 mod traits;
