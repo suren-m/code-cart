@@ -1,8 +1,12 @@
-trait UserInfo {}
+// all userinfos must also implement debug
+trait UserInfo: std::fmt::Debug {
+}
+
 
 // deriving Eq ensures that == has expected behaviour
 // with respect to transitivity, symmetry & reflexivity
 // must also implement (or derive) PartialEq
+#[derive(Debug)]
 struct WebUserInfo {
     age: u32,
     firstname: String,
@@ -17,9 +21,10 @@ impl std::fmt::Display for WebUserInfo {
 }
 
 // unit structs example when using constraints on partialEq
-#[derive(Eq, PartialEq)]
+#[derive(Eq, PartialEq, Debug)]
 struct DefaultUserInfo;
 impl UserInfo for DefaultUserInfo {}
+#[derive(Debug)]
 struct TestUserInfo;
 impl UserInfo for TestUserInfo {}
 
@@ -49,6 +54,10 @@ impl PartialEq for UniqueUser<TestUserInfo> {
     }
 }
 
+fn printer(info: &impl std::fmt::Display) {
+    println!("{}", info);
+}
+
 /// cargo test traits -- --nocapture
 #[cfg(test)]
 mod tests {
@@ -68,6 +77,9 @@ mod tests {
 
         // display
         assert_eq!(format!("{}", u2), "user: Jane Doe");
+
+        printer(&u1);
+        println!("{:?}", &u2);
 
         // create unique web user
         let wu1 = UniqueUser::<WebUserInfo> { id: 1, username: "Doe".to_string(), user_info: u1 };
@@ -109,5 +121,7 @@ mod tests {
 
         // can't do this
         // assert!(wu1 == tu1);
+
+
     }
 }
