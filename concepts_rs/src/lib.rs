@@ -3,7 +3,6 @@
 #![allow(unused_variables)]
 
 mod basics;
-mod closures;
 mod filesystem;
 mod functional;
 mod lifetimes;
