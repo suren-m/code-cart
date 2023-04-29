@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"fn":[["add",""]],"mod":[["subarrays",""]]};
+window.SIDEBAR_ITEMS = {"fn":["add"],"mod":["subarrays"]};
