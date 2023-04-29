@@ -18,7 +18,21 @@ fn squares(n: u32) -> impl Iterator<Item = u32> {
     (0..n).map(|x| x * x)
 }
 
-// Option 2: Using a dedicated type
+// Option 2: using a function without map
+fn squares_v2(n: u32) -> impl Iterator<Item = u32> {
+    let mut curr = 0;
+    std::iter::from_fn(move || {
+        if curr < n {
+            let res = curr * curr;
+            curr += 1;
+            Some(res)
+        } else {
+            None
+        }
+    })
+}
+
+// Option 3: Using a dedicated type
 struct Squares {
     n: u32,
     curr: u32,
@@ -57,5 +71,10 @@ mod tests {
         for x in squares(5) {
             println!("squares func: {}", x);
         }
+        
+        for x in squares_v2(5) {
+            println!("squares_v2 func: {}", x);
+        }
+
     }
 }
