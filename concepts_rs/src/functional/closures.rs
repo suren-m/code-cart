@@ -19,15 +19,18 @@ fn closures() {
         *name_ref = format!("{} {}", title, name_ref).to_string();
     };
     add_title("Mr.");
-    println!("name: {}", &name);
 
     // exclusive closure. consumes x
-    let mut change_name = move |new_name: &str| {
-        name = new_name.to_string();
-        println!("new name: {}", name);
+    let consume_name = || {
+        let new_name = name;
+        println!("name: {}", new_name);
     };
-    change_name("Jane");
-    // can't do already moved
+    consume_name();
+
+    // FnOnce can't be called again.
+    // consume_name();
+
+    // can't do. name already moved
     // println!("new name: {}", name);
 }
 
