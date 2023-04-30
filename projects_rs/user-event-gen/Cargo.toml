@@ -1,0 +1,17 @@
+[package]
+name = "user-event-gen"
+version = "0.1.0"
+edition = "2021"
+default-run = "simulator"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+log = "0.4.17"
+env_logger = "0.10.0"
+
+rand = "0.8.5"
+chrono = "0.4.24"
+serde = "1.0.160"
+
+user-event-lib = { path = "../user-event-lib" }
