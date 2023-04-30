@@ -1,0 +1,6 @@
+[workspace]
+
+members = [
+  "user-event-lib",
+  "user-event-gen"
+]
