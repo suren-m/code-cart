@@ -77,5 +77,12 @@ mod tests {
         assert_eq!(reverse(&mut String::from("rev")), &mut String::from("ver"));
         assert_eq!(reverse_v2(String::from("rev")), String::from("ver"));
         assert_eq!(reverse_v3(&mut String::from("rev")), &mut String::from("ver"));
+
+        let s = String::from("hello world");
+        println!("{}",s.get(0..5).unwrap());
+        let idx1 = s.find('o').unwrap(); // find first occurrence of 'o'
+        println!("'o' idx1: {}", idx1);
+        let idx2 = s[idx1+1..].find('o').unwrap() + idx1 + 1; // second occurrence of 'o'
+        println!("'o' idx2: {}", idx2);
     }
 }
