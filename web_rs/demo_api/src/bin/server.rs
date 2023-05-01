@@ -4,7 +4,7 @@ use axum::{
     routing::{get, post},
     Json, Router,
 };
-use demo_api::endpoints::counties::all;
+use demo_api::endpoints::counties::{all, county};
 use serde::{Deserialize, Serialize};
 use std::net::SocketAddr;
 
@@ -12,7 +12,7 @@ use std::net::SocketAddr;
 async fn main() {
     tracing_subscriber::fmt::init();
 
-    let app = Router::new().route("/all", get(all));
+    let app = Router::new().route("/all", get(all)).route("/county/:code", get(county));
 
     let addr = SocketAddr::from(([127, 0, 0, 1], 3000));
     tracing::debug!("listening on {}", addr);

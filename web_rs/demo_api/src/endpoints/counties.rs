@@ -1,7 +1,7 @@
 use std::{fs, path::PathBuf};
 
 use crate::models::counties::County;
-use axum::{http::StatusCode, Json};
+use axum::{extract::Path, http::StatusCode, Json};
 
 pub async fn all() -> (StatusCode, Json<Vec<County>>) {
     let data = load_json();
@@ -10,6 +10,16 @@ pub async fn all() -> (StatusCode, Json<Vec<County>>) {
         return (StatusCode::INTERNAL_SERVER_ERROR, Json(vec![]));
     }
     (StatusCode::OK, Json(data.unwrap()))
+}
+
+pub async fn county(Path(code): Path<String>) -> (StatusCode, Json<Option<County>>) {
+    let data = load_json().unwrap();
+    if code.len() != 3 {
+        tracing::error!("Invalid county code: {}", code);
+        return (StatusCode::BAD_REQUEST, Json(None));
+    }
+    let county = data.into_iter().find(|c| c.code == code.to_uppercase());
+    (StatusCode::OK, Json(county))
 }
 
 fn load_json() -> Result<Vec<County>, serde_json::Error> {
