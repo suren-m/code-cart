@@ -2,5 +2,6 @@
 
 members = [
   "user-event-lib",
-  "user-event-gen"
+  "user-event-gen",
+  "words-lib"
 ]
