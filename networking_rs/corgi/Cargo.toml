@@ -1,0 +1,10 @@
+[workspace]
+
+members = [
+  "local-cluster-bootstrap",
+  "client",
+  "control-plane",
+  "server",
+  "core"  
+]
+
