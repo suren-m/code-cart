@@ -1,43 +1,32 @@
 use std::{fs, path::PathBuf};
 
 use crate::models::counties::County;
-use axum::{extract::Path, http::StatusCode, Json};
-use serde::{Deserialize, Serialize};
-use serde_json::Deserializer;
+use axum::{http::StatusCode, Json};
 
-pub async fn all() -> (StatusCode, Json<Vec<Location>>) {
-    (StatusCode::OK, Json(load_json().unwrap()))
+pub async fn all() -> (StatusCode, Json<Vec<County>>) {
+    let data = load_json();
+    if data.is_err() {
+        tracing::error!("{} failed to parse json", data.err().unwrap());
+        return (StatusCode::INTERNAL_SERVER_ERROR, Json(vec![]));
+    }
+    (StatusCode::OK, Json(data.unwrap()))
 }
 
-#[derive(Debug, Deserialize, Serialize)]
-pub struct Location {
-    pub name: String,
-    pub abbreviation: String,
-    pub country: String,
+fn load_json() -> Result<Vec<County>, serde_json::Error> {
+    let contents = fs::read_to_string(get_path()).expect("file not found");
+
+    serde_json::from_str(&contents)
+
+    //println!("{:#?}", counties);
+    //Ok(counties)
 }
 
-fn load_json() -> Result<Vec<Location>, serde_json::Error> {
-    // let data = get_data();
-    // let mut deserializer = Deserializer::from_str(&data);
-    // let counties: Vec<County> = Deserialize::deserialize(&mut deserializer)?;
-    // Ok(counties)
-    let contents = fs::read_to_string("./data/UKCounties.json").expect("file not found");
-
-    let locations: Vec<Location> = serde_json::from_str(&contents).expect("Failed to parse JSON");
-
-    println!("{:#?}", locations);
-    Ok(locations)
-}
-
-fn get_data() -> String {
+fn get_path() -> PathBuf {
     let cwd = std::env::current_dir().unwrap();
     let filename = PathBuf::from("data/UKCounties.json");
     let path = cwd.join(filename);
-    println!("{:?}", path);
-
-    let data = std::fs::read_to_string(path).unwrap();
-    println!("retrieved data");
-    data
+    tracing::info!("{:?}", path);
+    path
 }
 
 #[cfg(test)]
