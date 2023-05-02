@@ -3,34 +3,10 @@
 <a href="#3" id="3">3</a>
 <a href="#4" id="4">4</a>
 <a href="#5" id="5">5</a>
-<a href="#6" id="6">6</a>
-<a href="#7" id="7">7</a>
-<a href="#8" id="8">8</a>
-<a href="#9" id="9">9</a>
-<a href="#10" id="10">10</a>
-<a href="#11" id="11">11</a>
-<a href="#12" id="12">12</a>
-<a href="#13" id="13">13</a>
-<a href="#14" id="14">14</a>
-<a href="#15" id="15">15</a>
-<a href="#16" id="16">16</a>
-<a href="#17" id="17">17</a>
 </pre><pre class="rust"><code><span class="attr">#![allow(dead_code)]
-</span><span class="kw">pub mod </span>subarrays;
-
-<span class="kw">pub fn </span>add(left: usize, right: usize) -&gt; usize {
-    left + right
-}
-
-<span class="attr">#[cfg(test)]
-</span><span class="kw">mod </span>tests {
-    <span class="kw">use super</span>::<span class="kw-2">*</span>;
-
-    <span class="attr">#[test]
-    </span><span class="kw">fn </span>it_works() {
-        <span class="kw">let </span>result = add(<span class="number">2</span>, <span class="number">2</span>);
-        <span class="macro">assert_eq!</span>(result, <span class="number">4</span>);
-    }
-}
+</span><span class="kw">pub mod </span>can_sum;
+<span class="kw">pub mod </span>fib;
+<span class="kw">pub mod </span>subarrays;
+<span class="kw">pub mod </span>two_sum;
 </code></pre></div>
 </section></main><div id="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="dynamic_programming" data-themes="" data-resource-suffix="" data-rustdoc-version="1.69.0 (84c898d65 2023-04-16)" data-search-js="search-8a59a8356673ec1f.js" data-settings-js="settings-f0c5c39777a9a2f6.js" data-settings-css="settings-0bcba95ff279c1db.css" ></div></body></html>

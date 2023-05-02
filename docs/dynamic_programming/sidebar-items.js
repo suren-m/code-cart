@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"fn":["add"],"mod":["subarrays"]};
+window.SIDEBAR_ITEMS = {"mod":["can_sum","fib","subarrays","two_sum"]};
