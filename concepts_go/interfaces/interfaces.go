@@ -38,3 +38,30 @@ func printArea(s Shape) {
 }
 
 // Composite
+type Animal interface {
+	MakeSound()
+}
+
+type Dog interface {
+	Animal
+	WagTail()
+}
+
+type MyDog struct{}
+
+func (d MyDog) MakeSound() {
+	fmt.Println("Woof!")
+}
+
+func (d MyDog) WagTail() {
+	fmt.Println("Wagging Tail")
+}
+
+func main() {
+	var c Shape = Circle{Radius: 3}
+	//	c := Circle { Radius: 3 }
+	printArea(c)
+	var myDog Dog = MyDog{}
+	//myDog.MakeSound()
+	myDog.WagTail()
+}

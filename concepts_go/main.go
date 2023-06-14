@@ -1,8 +1,7 @@
 package main
 
-func main() {
-	var c Shape = Circle{Radius: 3}
-	//	c := Circle { Radius: 3 }
+import "fmt"
 
-	printArea(c)
+func main() {
+	fmt.Print("hello")
 }
