@@ -2,17 +2,7 @@ package main
 
 import "fmt"
 
-const (
-	Sunday = iota
-	Monday
-	Tuesday
-)
-
-var days = []string{"sun", "mon", "tue"}
-
-func main() {
-	fmt.Println(days[Sunday], days[Monday], Tuesday)
-
+func fizzbuzzfuzz(n int) {
 	rules := map[int]string{
 		3: "Fizz",
 		5: "Buzz",
@@ -21,7 +11,7 @@ func main() {
 
 	order := []int{3, 5, 7}
 
-	for i := 1; i <= 100; i++ {
+	for i := 1; i <= n; i++ {
 		output := ""
 		for _, k := range order {
 			if i%k == 0 {
@@ -34,4 +24,8 @@ func main() {
 			fmt.Println(output)
 		}
 	}
+}
+
+func main() {
+	fizzbuzzfuzz(100)
 }
