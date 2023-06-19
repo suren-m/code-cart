@@ -31,5 +31,6 @@ func main() {
 	z := make([]int, 5)
 	fmt.Println(z, len(z), cap(z))
 
-	fmt.Println("dupes removed:", removeDuplicates([]int{1,1,2}))
+	//fmt.Println("dupes removed:", removeDuplicates([]int{1,1,2}))
+	fmt.Println("longest substring: ", lengthOfLongestSubstring("pwwkew"))
 }
