@@ -1,5 +1,3 @@
-Sure, let's modify the tables to include the `chAlreadyExists` column:
-
 **For the input 'abcabcbb':**
 
 | Iteration | Current Character | `knownChars`           | `start` | `end` | `currMax` | `max` | `chAlreadyExists` |
